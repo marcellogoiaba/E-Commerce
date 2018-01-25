@@ -6,5 +6,39 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  title = '';
+  url = '';
+  listItems: any;
+  constructor(){
+    this.listItems = [
+      {
+        name: "Home",
+        link: "#/home"
+      },
+      {
+        name: "Cart",
+        link: "#/cart"
+      },
+      {
+        name: "Products",
+        link: "#/products"
+      },
+      {
+        name: "About",
+        link: "#/about"
+      }
+  ]
+  }
+  add(title, url){
+    if(title !== "" && url !== ""){
+      url = "http://" + url;
+      this.listItems.push({
+        name:title, 
+        link:url, 
+        inNew:true
+      });
+      this.title = "";
+      this.url = "";
+    }
+  }
 }
